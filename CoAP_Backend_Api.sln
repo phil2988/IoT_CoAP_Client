@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoAP_Backend_Api", "CoAP_Backend_Api\CoAP_Backend_Api.csproj", "{3CBF2497-8B7C-4B11-BF69-464AF2B52BB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CBF2497-8B7C-4B11-BF69-464AF2B52BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CBF2497-8B7C-4B11-BF69-464AF2B52BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CBF2497-8B7C-4B11-BF69-464AF2B52BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CBF2497-8B7C-4B11-BF69-464AF2B52BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC5F0F7A-0E20-46E5-8093-6834B3DCC3FC}
+	EndGlobalSection
+EndGlobal
