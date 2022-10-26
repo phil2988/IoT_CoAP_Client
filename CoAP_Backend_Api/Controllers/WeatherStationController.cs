@@ -1,5 +1,6 @@
 using CoAP;
 using CoAP_Backend_Api.Models;
+using CoAP_Backend_Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoAP_Backend_Api.Controllers
@@ -8,11 +9,13 @@ namespace CoAP_Backend_Api.Controllers
     [Route("[controller]")]
     public class WeatherStationController : ControllerBase
     {
+        private readonly IWeatherStationServices services;
         private CoapClient client;
-        public WeatherStationController()
+        public WeatherStationController(IWeatherStationServices services)
         {
             client = new CoapClient();
             client.Uri = new Uri("coap://192.168.137.149/Espressif");
+            this.services = services;
         }
 
         [HttpGet()]
@@ -29,7 +32,10 @@ namespace CoAP_Backend_Api.Controllers
             {
                 responses.Add(value);
             }
-            return Ok(new Measurement { Temperature = double.Parse(responses[0])});
+            var returnValue = new Measurement { Temperature = double.Parse(responses[0]) };
+            var res = await services.AddMeasurementToDb(returnValue);
+
+            return Ok(new JsonResult(returnValue));
         }
     }
 }

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore.SqlServer;
 using CoAP_Backend_Api.Database;
 using Microsoft.EntityFrameworkCore;
+using CoAP_Backend_Api.Repositories;
+using CoAP_Backend_Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,18 @@ builder.Services.AddDbContext<WeatherContext>(options =>
     );
 });
 
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    {
+        policy.WithOrigins("*");
+    });
+});
+    
+builder.Services.AddScoped<IWeatherStationRepository, WeatherStationRepository>();
+builder.Services.AddScoped<IWeatherStationServices, WeatherStationServices>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,5 +44,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
