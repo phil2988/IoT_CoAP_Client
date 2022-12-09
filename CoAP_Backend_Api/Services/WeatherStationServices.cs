@@ -6,6 +6,7 @@ namespace CoAP_Backend_Api.Services
     public interface IWeatherStationServices
     {
         Task<int> AddMeasurementToDb(Measurement measurement);
+        List<Measurement> GetAllMeasurements();
     }
     public class WeatherStationServices: IWeatherStationServices
     {
@@ -18,6 +19,11 @@ namespace CoAP_Backend_Api.Services
         public async Task<int> AddMeasurementToDb(Measurement measurement)
         {
             return await Repository.Add(measurement);
+        }
+
+        public List<Measurement> GetAllMeasurements()
+        {
+            return Repository.GetAll();
         }
     }
 }

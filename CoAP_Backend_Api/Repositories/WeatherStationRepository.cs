@@ -1,11 +1,13 @@
 ﻿using CoAP_Backend_Api.Database;
 using CoAP_Backend_Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoAP_Backend_Api.Repositories
 {
     public interface IWeatherStationRepository
     {
         Task<int> Add(Measurement measurement);
+        List<Measurement> GetAll();
     }
     public class WeatherStationRepository: IWeatherStationRepository
     {
@@ -21,6 +23,13 @@ namespace CoAP_Backend_Api.Repositories
             dbContext.Measurements.Add(measurement);
             var result = await dbContext.SaveChangesAsync();
             return result;
+        }
+
+        public List<Measurement> GetAll()
+        {
+            return dbContext.Measurements
+                .Include((m) => m.SensorMeasurements)
+                .ToList();
         }
     }
 }

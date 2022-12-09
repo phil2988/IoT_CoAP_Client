@@ -25,31 +25,51 @@ namespace CoAP_Backend_Api.Database
                 return;
             }
 
-            Measurements.AddRange(
-                new Measurement { 
-                    Temperature = 33
-                },
-                new Measurement
+            var dataToSeed = new List<Measurement>()
+            {
+                new Measurement()
                 {
-                    Temperature = 12
+                    TimeMeasured= DateTime.Now.AddDays(-1),
+                    SensorMeasurements = new List<SensorMeasurement>() {
+                        new SensorMeasurement() { SensorNumber = 1, Temperature = 33 },
+                        new SensorMeasurement() { SensorNumber = 2, Temperature = 22 },
+                        new SensorMeasurement() { SensorNumber = 3, Temperature = 15 },
+                        new SensorMeasurement() { SensorNumber = 4, Temperature = 27 },
+                    }
                 },
-                new Measurement
+                new Measurement()
                 {
-                    Temperature = 21.52
+                    TimeMeasured= DateTime.Now.AddDays(-2),
+                    SensorMeasurements = new List<SensorMeasurement>() {
+                        new SensorMeasurement () { SensorNumber = 1, Temperature = 26 },
+                        new SensorMeasurement () { SensorNumber = 2, Temperature = 24 },
+                        new SensorMeasurement () { SensorNumber = 3, Temperature = 16 },
+                        new SensorMeasurement () { SensorNumber = 4, Temperature = 33 },
+                    }
                 },
-                new Measurement
+                new Measurement()
                 {
-                    Temperature = 16.52
+                    TimeMeasured = DateTime.Now.AddDays(-3),
+                    SensorMeasurements = new List<SensorMeasurement>() {
+                        new SensorMeasurement () { SensorNumber = 1, Temperature = 25 },
+                        new SensorMeasurement () { SensorNumber = 2, Temperature = 28 },
+                        new SensorMeasurement () { SensorNumber = 3, Temperature = 22 },
+                        new SensorMeasurement () { SensorNumber = 4, Temperature = 21 },
+                    }
                 },
-                new Measurement
+                new Measurement()
                 {
-                    Temperature = 14.27
-                },
-                new Measurement
-                {
-                    Temperature = 32.53
+                    TimeMeasured = DateTime.Now.AddDays(-4),
+                    SensorMeasurements = new List<SensorMeasurement>() {
+                        new SensorMeasurement () { SensorNumber = 1, Temperature = 22 },
+                        new SensorMeasurement () { SensorNumber = 2, Temperature = 41 },
+                        new SensorMeasurement () { SensorNumber = 3, Temperature = 12 },
+                        new SensorMeasurement () { SensorNumber = 4, Temperature = 13 },
+                    }
                 }
-            );
+            };
+
+            Measurements.AddRange(dataToSeed);
             SaveChanges();
         }
     }
