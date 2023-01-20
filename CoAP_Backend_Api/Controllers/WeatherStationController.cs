@@ -14,7 +14,7 @@ namespace CoAP_Backend_Api.Controllers
         public WeatherStationController(IWeatherStationServices services)
         {
             client = new();
-            client.Uri = new Uri("coap://192.168.137.42/Espressif");
+            client.Uri = new Uri("coap://192.168.137.220/Espressif");
             this.services = services;
         }
         

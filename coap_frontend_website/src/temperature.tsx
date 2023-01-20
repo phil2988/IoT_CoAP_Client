@@ -23,8 +23,8 @@ type SensorMeasurement = {
 const Temperature: FunctionComponent = () => {
   const [values, setValues] = useState<Value[]>([]);
 
-  const url = "https://localhost:7026/WeatherStation/Newest";
-  //   const url = "https://localhost:7026/WeatherStation/All";
+  // const url = "https://localhost:7026/WeatherStation/Newest";
+  const url = "https://localhost:7026/WeatherStation/All";
 
   useEffect(() => {
     fetch(url)
